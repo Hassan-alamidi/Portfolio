@@ -1,0 +1,13 @@
+@mixin threeTone-Radial-Gradiant($outset, $middle, $inset, $insetDominance){
+    background: radial-gradient($inset, $middle, $outset $insetDominance);
+    background: -webkit-radial-gradient($inset, $middle, $outset $insetDominance);
+    background: -moz-radial-gradient($inset, $middle, $outset $insetDominance);
+    background: -o-radial-gradient($inset, $middle, $outset $insetDominance);
+}
+
+@mixin inflexible($width,$height){
+    min-height: $height;
+    max-height: $height;
+    min-width: $width;
+    max-width: $width;
+}

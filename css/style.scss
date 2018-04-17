@@ -1,0 +1,430 @@
+@import 'mixins';
+
+$mainContentBackground: #f3f3f2;
+
+html{
+    font-size:16px;
+}
+
+body{
+    margin: 0 auto;
+}
+#navbar{
+    position: absolute;
+    z-index:  1;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+nav{
+    display:block;
+    align-self: center;
+    width: 95%;
+    max-width: 1500px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#title{
+    color: beige;
+    display: flex;
+    align-self: center;
+    list-style-type: none;
+}
+nav ul{
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    
+}
+
+nav ul li{
+    text-align: center;
+    flex:1 1 0;
+    padding-bottom:  10px;
+    padding-top:  10px;
+    padding-left:  5px;
+    padding-right: 5px;
+}
+
+#navbar ul li a{
+    text-decoration: none;
+    color: beige;
+    font-weight:  bold;
+    font-size: 1.2em;
+}
+
+#topNav{
+    display: flex;
+    justify-content: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#navButton{
+    align-self: center;
+    display: none;
+}
+.hamburger{
+    width: 35px;
+    height: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: black;
+    margin: 5px 0;
+}
+
+#header{
+    position: relative;
+    background-image: url("../images/pcb.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height:600px;
+    box-shadow:  2px 5px 15px 4px #00000059;
+}
+
+#headContainer{
+    background-color: #71757152;
+    width: 100%;
+    height:100%;
+}
+
+#mainContent{
+    padding-top:  200px;
+    padding-bottom:  100px;
+    color: #585957;
+    width:100%;
+    background-color: $mainContentBackground;
+    display: flex;
+    flex-direction: column;
+}
+
+#mainContent h3{
+    font-size: 2em;
+    text-align: center;
+}
+
+#aboutme, #resume{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.information{
+    min-width: 400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    flex: 1;
+}
+
+.infoContainer{
+    display: flex;
+
+}
+
+.description{
+    padding-top: 12px;
+    padding-left: 30px;
+    padding-right: 5px;
+    padding-bottom: 30px;
+    flex: 3;
+}
+
+.dateContainer{
+    display: flex;
+    min-width: 117px;
+    position: relative;
+    top: 29px;
+    flex: 1;
+}
+.date{
+    min-width: 88%;
+    max-width: 88%;
+    min-height: 70px;
+    max-height: 135px;
+    display: table;
+    background: wheat;
+    padding: 5px;
+    flex: 1;
+    h1{
+        font-size: 1rem;
+        text-align: center;
+    }
+}
+.verticalLine{
+    background: green;
+    /* max height not needed but it doesn't hurt*/
+    @include inflexible(3px,100%);
+    margin-left: 20px;
+    overflow: visible;
+    
+    div{
+    background: $mainContentBackground;
+    @include inflexible(24px,24px);
+    position: relative;
+    top: 30px;
+    left: -13px;
+    border-radius: 50%;
+    border-color: green;
+    border-style: solid;
+    }
+}
+.arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid wheat;
+    margin-top: 10px;
+}
+
+#profileIntro, #education{
+    padding-right: 25px;
+}
+
+#skillSet{
+   display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#skills, #experience{
+    padding-left:25px;
+}
+
+#profilePic{
+    margin:  0 auto;
+    position: relative;
+    top: 450px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    border-radius: 100%;
+    box-shadow: 0px 9px 15px 4px #00000059;
+    border: 5px solid #f3f3f2;
+}
+
+#projects{
+    background-color: #585957;
+    min-height: 600px;
+    padding-left: 15px;
+    padding-right: 15px;
+    h2{
+        margin: 0;
+        padding-top: 15px;
+        text-align: center;
+        font-size: 4rem;
+        color: whitesmoke;
+    }
+    ul{
+            flex-wrap: wrap;
+            flex-direction: row;
+            display: flex;
+            margin: 0;
+            padding: 5px;
+            list-style-type: none;
+        li{
+            text-align: center;
+            flex: 1;
+            color: aliceblue;
+            background: crimson;
+            margin: 10px;
+            min-width: 300px;
+            max-width: 600px;
+            min-height: 300px;
+            max-height: 600px;
+        }
+    }
+}
+
+p1{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+//progress bar
+$borderWidth: 7px;
+$animationTime: 1.5s;
+$border-color-default: #a9a9a9;
+$border-color-fill: #ffb43e;
+$size: 150px;
+$howManySteps: 10; //this needs to be even. 
+
+.progress-background{
+    margin-top: 15px
+    color: white;
+    @include inflexible($size,$size);
+    padding: 10px;
+    border-radius: 50%;
+    background: #585957;
+    flex: 1;
+}
+.progress {
+  width: $size;
+  height: $size;
+  line-height: $size;
+  background: none;
+  margin: 0 auto;
+  box-shadow: none;
+  position: relative;
+  &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: $borderWidth solid $border-color-default;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box
+  }
+  > span {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+  .progress-left {
+    left: 0;
+  }
+  .progress-bar {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border-width: $borderWidth;
+    border-style: solid;
+    position: absolute;
+    top: 0;
+    border-color: $border-color-fill;
+    box-sizing: border-box
+  }
+  .progress-left .progress-bar {
+    left: 100%;
+    border-top-right-radius: ($size/2);
+    border-bottom-right-radius: ($size/2);
+    border-left: 0;
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+  }
+  .progress-right {
+    right: 0;
+    .progress-bar {
+      left: -100%;
+      border-top-left-radius: ($size/2);
+      border-bottom-left-radius: ($size/2);
+      border-right: 0;
+      -webkit-transform-origin: center right;
+      transform-origin: center right;
+    }
+  }
+  .progress-value {
+    @include threeTone-Radial-Gradiant(#575957,#797b79, #a5a2a2, 60%);
+
+    display: flex;
+    border-radius: 50%;
+    font-size: 36px;
+    text-align: center;
+    line-height: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-weight: 300;
+    div {
+      margin-top: 10px;
+    }
+    span {
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+/* This for look creates the 	necessary css animation names 
+Due to the split circle of progress-left and progress right, we must use the animations on each side. 
+*/
+@for $i from 1 through $howManySteps {
+	$stepName: ($i*(100 / $howManySteps));
+
+	@if $i <= ($howManySteps/2) { 
+		.progress[data-percentage="#{$stepName}"] {
+			.progress-right .progress-bar {
+				 animation: loading-#{$i} $animationTime linear forwards;
+			}
+			.progress-left .progress-bar {animation: 0;}
+		}
+	}
+
+	@if $i > ($howManySteps/2)  {  
+		.progress[data-percentage="#{$stepName}"] {
+			.progress-right .progress-bar {
+				animation: loading-#{($howManySteps/2)} $animationTime linear forwards; //set the animation to longest animation
+			}
+			.progress-left .progress-bar {
+      animation: loading-#{$i - ($howManySteps/2)} $animationTime linear forwards $animationTime;
+    }
+		}
+	}
+}
+
+//animation
+@for $i from 1 through ($howManySteps/2) { 
+	$degrees: (180/($howManySteps/2));
+	$degrees: ($degrees*$i);
+	@keyframes loading-#{$i}{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate($degrees);
+			transform: rotate(#{$degrees}deg);
+    }
+	}
+}
+
+
+@media only screen and (max-width:770px){
+    #navbar ul{
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #navButton{
+        display: block;
+    }
+    #topNav{
+        justify-content: space-between;
+    }
+    
+    
+    nav{
+        display: none;
+        width: 90%;
+    }
+    
+}
+
+@media only screen and (min-width:771px){
+    nav{
+        display: block;
+    }
+}
+
+@media only screen and (max-width:500px){
+    .information{
+        min-width: 300px;
+    }
+}
+   
