@@ -83,7 +83,6 @@ nav ul li {
 
 #mainContent {
   padding-top: 200px;
-  padding-bottom: 100px;
   color: #585957;
   width: 100%;
   background-color: #f3f3f2;
@@ -95,8 +94,14 @@ nav ul li {
   text-align: center; }
 
 #aboutme, #resume {
+  padding-bottom: 60px;
   display: flex;
   flex-wrap: wrap; }
+
+#resume {
+  background-color: #585957;
+  color: #d8d8d8;
+  text-shadow: 1px 1px black; }
 
 .information {
   min-width: 400px;
@@ -108,6 +113,19 @@ nav ul li {
   padding-top: 40px;
   padding-bottom: 20px;
   flex: 1; }
+
+#tidbitsAboutMe {
+  font-size: 1.3em;
+  font-weight: bold;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 40px; }
+  #tidbitsAboutMe div {
+    flex: 1;
+    text-align: center;
+    min-width: 230px;
+    padding: 40px 0 40px 0; }
 
 .infoContainer {
   display: flex; }
@@ -132,41 +150,65 @@ nav ul li {
   min-height: 70px;
   max-height: 135px;
   display: table;
-  background: wheat;
+  background: #d93b39;
   padding: 5px;
   flex: 1; }
   .date h1 {
     font-size: 1rem;
     text-align: center; }
 
+.itemHighlightIcon {
+  min-width: 30px;
+  padding-left: 15px;
+  align-items: center;
+  display: flex;
+  flex-direction: column; }
+
+.topLine {
+  /* flex: 1; */
+  height: 33px; }
+
+.bottomLine {
+  flex: 5; }
+
+.circleIcon {
+  background: #575957;
+  min-height: 24px;
+  max-height: 24px;
+  min-width: 24px;
+  max-width: 24px;
+  /* position: relative; */
+  /* top: 30px; */
+  /* left: -13px; */
+  border-radius: 50%;
+  border-color: #cccccc;
+  border-style: solid;
+  flex: 1; }
+
 .verticalLine {
-  background: green;
-  /* max height not needed but it doesn't hurt*/
-  min-height: 100%;
-  max-height: 100%;
+  background: #cccccc;
+  /* min-height: 100%; */
+  /* max-height: 100%; */
   min-width: 3px;
   max-width: 3px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   overflow: visible; }
-  .verticalLine div {
-    background: #f3f3f2;
-    min-height: 24px;
-    max-height: 24px;
-    min-width: 24px;
-    max-width: 24px;
-    position: relative;
-    top: 30px;
-    left: -13px;
-    border-radius: 50%;
-    border-color: green;
-    border-style: solid; }
+
+.horizontalLine {
+  background: #cccccc;
+  /* min-height: 100%; */
+  /* max-height: 100%; */
+  min-height: 3px;
+  max-height: 3px;
+  /* margin-left: 20px; */
+  overflow: visible; }
 
 .arrow-right {
   width: 0;
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  border-left: 10px solid wheat;
+  border-left: 10px solid #d93b39;
   margin-top: 10px; }
 
 #profileIntro, #education {
@@ -192,15 +234,19 @@ nav ul li {
   border: 5px solid #f3f3f2; }
 
 #projects {
-  background-color: #585957;
+  background-color: #f3f3f2;
   min-height: 600px;
-  width: 100%; }
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 60px;
+  padding-bottom: 60px; }
   #projects h2 {
+    color: #575957;
     margin: 0;
     padding-top: 15px;
+    padding-bottom: 25px;
     text-align: center;
-    font-size: 4rem;
-    color: whitesmoke; }
+    font-size: 4rem; }
   #projects ul {
     flex-wrap: wrap;
     flex-direction: row;
@@ -219,11 +265,21 @@ nav ul li {
       min-height: 300px;
       max-height: 600px; }
 
+#lifeGoals {
+  background: #585957;
+  color: #d8d8d8;
+  text-shadow: 1px 1px black;
+  padding-bottom: 100px; }
+
+.lifeEvents {
+  stroke-dasharray: 100; }
+
 p1 {
   font-size: 1.3em;
   font-weight: bold; }
 
 .progress-background {
+  margin-top: 15px;
   color: white;
   min-height: 150px;
   max-height: 150px;
