@@ -219,8 +219,38 @@ nav ul li {
   flex-wrap: wrap;
   justify-content: space-evenly; }
 
-#skills, #experience {
+#experience {
   padding-left: 25px; }
+
+#skills, #hobbies {
+  background-color: #f3f3f2; }
+  #skills div, #hobbies div {
+    flex-direction: column;
+    border-radius: 50%; }
+    #skills div p1, #hobbies div p1 {
+      padding-top: 10px; }
+  #skills ul, #hobbies ul {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    display: flex;
+    margin: 0;
+    padding: 5px;
+    list-style-type: none; }
+    #skills ul li, #hobbies ul li {
+      flex-basis: 100%;
+      max-width: 1000px; }
+      #skills ul li ul > li, #hobbies ul li ul > li {
+        padding: 15px 15px 0px 15px;
+        text-align: center;
+        flex: 1;
+        color: #d8d8d8;
+        min-height: 170px;
+        max-height: 170px;
+        min-width: 170px;
+        max-width: 170px;
+        padding-top: 15px;
+        padding-left: 15px; }
 
 #profilePic {
   margin: 0 auto;
@@ -264,6 +294,20 @@ nav ul li {
       max-width: 600px;
       min-height: 300px;
       max-height: 600px; }
+
+#hobbies div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 50%;
+  background: #575957; }
+  #hobbies div p1 {
+    padding-top: 10px; }
+
+.hobbyIcons {
+  margin-top: 15px;
+  height: 70px; }
 
 #lifeGoals {
   background: #585957;
