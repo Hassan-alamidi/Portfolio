@@ -116,6 +116,7 @@ nav ul li{
 }
 
 #resume{
+    overflow:hidden;
     background-color: #585957;
     color: #d8d8d8;
     text-shadow: 1px 1px black;
@@ -257,8 +258,13 @@ nav ul li{
     padding-left:25px;
 }
 
+#skills{
+    color:#585958;
+}
+
 #skills, #hobbies{
     background-color: #f3f3f2;
+    padding-bottom: 150px;
     
      div{
        
@@ -307,14 +313,14 @@ nav ul li{
 }
 
 #projects{
-    background-color: #f3f3f2;
+    background-color: #575857;
     min-height: 600px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 60px;
     padding-bottom: 60px;
     h2{
-        color: #575957;
+        color: #d8d8d8;
         margin: 0;
         padding-top: 15px;
         padding-bottom: 25px;
@@ -334,7 +340,7 @@ nav ul li{
             color: aliceblue;
             background: crimson;
             margin: 10px;
-            min-width: 300px;
+            min-width: 250px;
             max-width: 600px;
             min-height: 300px;
             max-height: 600px;
@@ -486,19 +492,19 @@ Due to the split circle of progress-left and progress right, we must use the ani
 
 	@if $i <= ($howManySteps/2) { 
 		.progress[data-percentage="#{$stepName}"] {
-			.progress-right .progress-bar {
+			.progress-right .animate-bar {
 				 animation: loading-#{$i} $animationTime linear forwards;
 			}
-			.progress-left .progress-bar {animation: 0;}
+			.progress-left .animate-bar {animation: 0;}
 		}
 	}
 
 	@if $i > ($howManySteps/2)  {  
 		.progress[data-percentage="#{$stepName}"] {
-			.progress-right .progress-bar {
+			.progress-right .animate-bar {
 				animation: loading-#{($howManySteps/2)} $animationTime linear forwards; //set the animation to longest animation
 			}
-			.progress-left .progress-bar {
+			.progress-left .animate-bar {
       animation: loading-#{$i - ($howManySteps/2)} $animationTime linear forwards $animationTime;
     }
 		}
@@ -547,11 +553,46 @@ Due to the split circle of progress-left and progress right, we must use the ani
     nav{
         display: block;
     }
+    
+   
+}
+
+@media only screen and (max-width:771px){
+ #resume{
+        font-size: 10px;
+        flex-direction: column;
+    }
+    
+    .date h1 {
+    font-size: 0.7rem;
+    }
 }
 
 @media only screen and (max-width:500px){
     .information{
-        min-width: 300px;
+        min-width: unset;
+    }
+    
+    #education, #experience{ 
+        padding-right: 10px;
+        padding-left: 10px;
+        
+        .dateContainer{
+            min-width: 70px;
+        }
+        
+        .description{
+            padding-right: 0px;
+            padding-left: 10px;
+        }
+        
+    }
+    
+    #projects ul li{
+        min-width: 250px;
     }
 }
+
+
+
    

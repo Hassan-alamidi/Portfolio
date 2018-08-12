@@ -5,9 +5,9 @@ const milestoneIcons = new Array();
 const careerPath = new Array();
 const timeline = new Array();
 const milestoneDescription = new Array();
-const t1 = new TimelineMax({ease:Linear.easeNone});
-const t2 = new TimelineMax({ease:Linear.easeNone, paused:true, onComplete:test});
-const t3 = new TimelineMax({ease:Linear.easeNone});
+const t1 = new TimelineMax({paused:true, ease:Linear.easeNone});
+const t2 = new TimelineMax({paused:true,ease:Linear.easeNone, paused:true, onComplete:finalAnimation});
+const t3 = new TimelineMax({paused:true, ease:Linear.easeNone});
 const ending = new TimelineMax({paused:true});
 
 ajax.onload = function(e){
@@ -21,9 +21,16 @@ ajax.onload = function(e){
 	reference.insertBefore(div,reference.childNodes[4]);
 }
 
-function test(){
+function playTimelineAnimation(){
+	t1.play();
+	t2.play();
+	t3.play();
+}
+
+function finalAnimation(){
 	ending.play();
 }
+
 function timeLineAnimation(){
 	//setTimeout to ensure object has been fully loaded
 	//may need to mess around with timings when live but I think 100ms (I think less would work too) coupled with onload event should do the job
@@ -43,7 +50,10 @@ function setupAnimation(){
 	var lines = document.getElementsByClassName('careerPath');
 	var numbers = document.getElementsByClassName('number');
 	numbers = Array.from(numbers);
-	numbers.unshift(document.getElementById("timeline"))
+	numbers.unshift(document.getElementById("timeline"));
+	numbers.unshift(document.getElementById("originalPlantxt"));
+	numbers.unshift(document.getElementById("currentProgressTxt"));
+	numbers.unshift(document.getElementById("yearTxt"));
 	//setup all objects individually
 	setupAndStoreObj(descriptions, "milestoneDescription");
 	setupAndStoreObj(circles, "milestoneIcon");
@@ -110,6 +120,8 @@ function beginAnimation(){
 		if(typeof time !== undefined && typeof time !== 'undefined'){
 			if(time.key === "timeline"){
 				t3.to(time.physicalObject, 1.2, {opacity:1, ease:Linear.easeNone});
+			}else if(time.key === "originalPlantxt" || time.key === "currentProgressTxt" || time.key === "yearTxt"){
+				t3.to(time.physicalObject, 1.2, {opacity:1, ease:Linear.easeNone}, 1);
 			}else{
 
 				t3.to(time.physicalObject, 1.2, {opacity:1, ease:Linear.easeNone}, "-=1");
@@ -117,11 +129,6 @@ function beginAnimation(){
 		}
 
 	}while(0 != milestoneIcons.length || 0 != milestoneDescription.length || 0 != careerPath.length || 0 != timeline.length);
-
-
-	t1.play();
-	t2.play();
-	t3.play();
 
 }
 
@@ -133,7 +140,7 @@ function setupAndStoreObj(objArr, type){
 	//loop through the array to configure and store the object
 	[].forEach.call(objArr, function(obj){
 		//get path length
-		if(type !== "milestoneDescription"){
+		if(type !== "milestoneDescription" && type !== "timeline"){
 			objLength = Math.round(obj.getTotalLength());
 		}
 		setupElements(obj, objLength, type);
@@ -161,6 +168,9 @@ function setupAndStoreObj(objArr, type){
 				break;
 			case "ti":
 			case "no":
+			case "or":
+			case "cu":
+			case "ye":
 				objDetails = {
 					key:obj.id,
 					length:objLength,

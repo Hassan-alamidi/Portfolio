@@ -99,6 +99,7 @@ nav ul li {
   flex-wrap: wrap; }
 
 #resume {
+  overflow: hidden;
   background-color: #585957;
   color: #d8d8d8;
   text-shadow: 1px 1px black; }
@@ -223,7 +224,8 @@ nav ul li {
   padding-left: 25px; }
 
 #skills, #hobbies {
-  background-color: #f3f3f2; }
+  background-color: #f3f3f2;
+  padding-bottom: 150px; }
   #skills div, #hobbies div {
     flex-direction: column;
     border-radius: 50%; }
@@ -264,14 +266,14 @@ nav ul li {
   border: 5px solid #f3f3f2; }
 
 #projects {
-  background-color: #f3f3f2;
+  background-color: #575857;
   min-height: 600px;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 60px;
   padding-bottom: 60px; }
   #projects h2 {
-    color: #575957;
+    color: #d8d8d8;
     margin: 0;
     padding-top: 15px;
     padding-bottom: 25px;
@@ -290,7 +292,7 @@ nav ul li {
       color: aliceblue;
       background: crimson;
       margin: 10px;
-      min-width: 300px;
+      min-width: 250px;
       max-width: 600px;
       min-height: 300px;
       max-height: 600px; }
@@ -299,8 +301,6 @@ nav ul li {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  border-radius: 50%;
   background: #575957; }
   #hobbies div p1 {
     padding-top: 10px; }
@@ -410,54 +410,54 @@ p1 {
 /* This for look creates the 	necessary css animation names 
 Due to the split circle of progress-left and progress right, we must use the animations on each side. 
 */
-.progress[data-percentage="10"] .progress-right .progress-bar {
+.progress[data-percentage="10"] .progress-right .animate-bar {
   animation: loading-1 1.5s linear forwards; }
-.progress[data-percentage="10"] .progress-left .progress-bar {
+.progress[data-percentage="10"] .progress-left .animate-bar {
   animation: 0; }
 
-.progress[data-percentage="20"] .progress-right .progress-bar {
+.progress[data-percentage="20"] .progress-right .animate-bar {
   animation: loading-2 1.5s linear forwards; }
-.progress[data-percentage="20"] .progress-left .progress-bar {
+.progress[data-percentage="20"] .progress-left .animate-bar {
   animation: 0; }
 
-.progress[data-percentage="30"] .progress-right .progress-bar {
+.progress[data-percentage="30"] .progress-right .animate-bar {
   animation: loading-3 1.5s linear forwards; }
-.progress[data-percentage="30"] .progress-left .progress-bar {
+.progress[data-percentage="30"] .progress-left .animate-bar {
   animation: 0; }
 
-.progress[data-percentage="40"] .progress-right .progress-bar {
+.progress[data-percentage="40"] .progress-right .animate-bar {
   animation: loading-4 1.5s linear forwards; }
-.progress[data-percentage="40"] .progress-left .progress-bar {
+.progress[data-percentage="40"] .progress-left .animate-bar {
   animation: 0; }
 
-.progress[data-percentage="50"] .progress-right .progress-bar {
+.progress[data-percentage="50"] .progress-right .animate-bar {
   animation: loading-5 1.5s linear forwards; }
-.progress[data-percentage="50"] .progress-left .progress-bar {
+.progress[data-percentage="50"] .progress-left .animate-bar {
   animation: 0; }
 
-.progress[data-percentage="60"] .progress-right .progress-bar {
+.progress[data-percentage="60"] .progress-right .animate-bar {
   animation: loading-5 1.5s linear forwards; }
-.progress[data-percentage="60"] .progress-left .progress-bar {
+.progress[data-percentage="60"] .progress-left .animate-bar {
   animation: loading-1 1.5s linear forwards 1.5s; }
 
-.progress[data-percentage="70"] .progress-right .progress-bar {
+.progress[data-percentage="70"] .progress-right .animate-bar {
   animation: loading-5 1.5s linear forwards; }
-.progress[data-percentage="70"] .progress-left .progress-bar {
+.progress[data-percentage="70"] .progress-left .animate-bar {
   animation: loading-2 1.5s linear forwards 1.5s; }
 
-.progress[data-percentage="80"] .progress-right .progress-bar {
+.progress[data-percentage="80"] .progress-right .animate-bar {
   animation: loading-5 1.5s linear forwards; }
-.progress[data-percentage="80"] .progress-left .progress-bar {
+.progress[data-percentage="80"] .progress-left .animate-bar {
   animation: loading-3 1.5s linear forwards 1.5s; }
 
-.progress[data-percentage="90"] .progress-right .progress-bar {
+.progress[data-percentage="90"] .progress-right .animate-bar {
   animation: loading-5 1.5s linear forwards; }
-.progress[data-percentage="90"] .progress-left .progress-bar {
+.progress[data-percentage="90"] .progress-left .animate-bar {
   animation: loading-4 1.5s linear forwards 1.5s; }
 
-.progress[data-percentage="100"] .progress-right .progress-bar {
+.progress[data-percentage="100"] .progress-right .animate-bar {
   animation: loading-5 1.5s linear forwards; }
-.progress[data-percentage="100"] .progress-left .progress-bar {
+.progress[data-percentage="100"] .progress-left .animate-bar {
   animation: loading-5 1.5s linear forwards 1.5s; }
 
 @keyframes loading-1 {
@@ -512,8 +512,27 @@ Due to the split circle of progress-left and progress right, we must use the ani
 @media only screen and (min-width: 771px) {
   nav {
     display: block; } }
+@media only screen and (max-width: 771px) {
+  #resume {
+    font-size: 10px;
+    flex-direction: column; }
+
+  .date h1 {
+    font-size: 0.7rem; } }
 @media only screen and (max-width: 500px) {
   .information {
-    min-width: 300px; } }
+    min-width: unset; }
+
+  #education, #experience {
+    padding-right: 10px;
+    padding-left: 10px; }
+    #education .dateContainer, #experience .dateContainer {
+      min-width: 70px; }
+    #education .description, #experience .description {
+      padding-right: 0px;
+      padding-left: 10px; }
+
+  #projects ul li {
+    min-width: 250px; } }
 
 /*# sourceMappingURL=style.css.map */
