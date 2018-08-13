@@ -11,7 +11,9 @@ const t3 = new TimelineMax({paused:true, ease:Linear.easeNone});
 const ending = new TimelineMax({paused:true});
 
 ajax.onload = function(e){
-	var div = document.createElement('div');
+	var div = document.createElement('object');
+	//div.setAttribute('data', "images/careerTimelinetest3.svg");
+	//div.setAttribute('type', "image/svg+xml");
 	div.style.width = "100%";
 	div.addEventListener("load", timeLineAnimation());
 	//dont forget to remove the svg width and height params
