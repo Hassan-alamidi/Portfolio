@@ -62,15 +62,19 @@ function hideElements(objArr, direction){
 }
 
 function setupTimeline(){
+
         //slide Title into view
         slideInAndWobble(eduTitle, "Title");
         slideInAndWobble(expTitle, "Title");
+        
         //slide description into view
         slideIn(eduDescription, "Description");
         slideIn(expDescription, "Description");
+        
         //slide highlight Icon in with description
         slideIn(eduSelector, "Description");
         slideIn(expSelector, "Description");
+        
         //slide date into view
         slideInAndWobble(eduDate, "Date");
         slideInAndWobble(expDate, "Date");

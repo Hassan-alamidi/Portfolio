@@ -136,7 +136,9 @@ nav ul li{
 }
 
 #tidbitsAboutMe{
-    font-size: 1.3em;
+    font-family: sans-serif;
+    font-style: italic;
+    font-size: 1em;
     font-weight: bold;
     flex-direction: row;
     display: flex;
@@ -147,7 +149,7 @@ nav ul li{
         flex: 1;
         text-align: center;
         min-width: 230px;
-        padding: 40px 0 40px 0;
+        padding: 40px 30px 40px 0;
     }
 }
 
@@ -162,6 +164,11 @@ nav ul li{
     padding-right: 5px;
     padding-bottom: 30px;
     flex: 3;
+    
+    p1{
+        font-size: 1em;
+        font-family: sans-serif;
+    }
 }
 
 .dateContainer{

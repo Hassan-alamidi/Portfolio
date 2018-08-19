@@ -35,13 +35,13 @@ function showTitle(){
 function darkNav(){
 	TweenMax.to($('#navbar'), 1.2 , {background:"rgba(88, 89, 87, 1)"});
 	TweenMax.to($('.hamburger'), 1.2 , {"background-color":"rgba(255, 255, 255, 1)"});
-	TweenMax.to($('nav ul li a'), 1.2 , { color:"rgba(255, 255, 255, 1)"});
+	TweenMax.to($('nav ul li a'), 1.2 , { color:"rgba(215, 215, 215, 1)"});
 }
 
 function lightNav(){
 	TweenMax.to($('#navbar'), 1.2 , {background:"rgba(243, 243, 242, 1)"});
 	TweenMax.to($('.hamburger'), 1.2 , {"background-color":"rgba(0, 0,0, 1)"});
-	TweenMax.to($('nav ul li a'), 1.2 , { color:"rgba(0, 0,0, 1)"});
+	TweenMax.to($('nav ul li a'), 1.2 , { color:"rgba(79, 80, 79, 1)"});
 }
 
 function transparentNav(){
