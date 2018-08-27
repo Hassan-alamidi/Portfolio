@@ -2,10 +2,17 @@
 //that way on resize we can alter the offsets to better accomidate the new screen size
 var scrollController = new ScrollMagic.Controller();
 var multiplier = 0;
+var navOverMain, navOverResume, navOverSkills, navOverProjects, navOverHobbies;
+var positions;
 
 
 $(window).resize(function() {
+    //set and update trigger offsets when window height is altered
+    //it may be best to update every 100 pixels in height
     setTriggerMultiplier();
+    updateOffset();
+    getTriggerPositions();
+    setOffsetPoints(positions);
 });
 
 function setTriggerMultiplier(){
@@ -13,7 +20,7 @@ function setTriggerMultiplier(){
     if(window.innerHeight < 400){
         multiplier = 1;
     }else if(window.innerHeight < 600){
-        multiplier = 2.3;
+        multiplier = 2;
     }else if(window.innerHeight < 800){
         multiplier = 3;
     }else{
@@ -26,7 +33,6 @@ $(window).on('load',function(){
     //start up scripts
     resumeAnimations();
     setupSkillsAnimation();
-
     //check window height and adjust triggers accordingly
     setTriggerMultiplier();
 
@@ -43,7 +49,7 @@ $(window).on('load',function(){
         .addIndicators();
 
         //change nav bar background colour
-        new ScrollMagic.Scene({
+        navOverMain = new ScrollMagic.Scene({
             triggerElement:"#mainContent",
             offset:(100 * multiplier)
         })
@@ -61,7 +67,7 @@ $(window).on('load',function(){
         .on("enter", playResume)
         .addIndicators();
 
-        new ScrollMagic.Scene({
+        navOverResume = new ScrollMagic.Scene({
             triggerElement: "#resume",
             offset:(100 * multiplier)
         })
@@ -89,7 +95,7 @@ $(window).on('load',function(){
         .on("enter", playSkillsAnimation)
         .addIndicators();
 
-        new ScrollMagic.Scene({
+        navOverSkills = new ScrollMagic.Scene({
             triggerElement: "#skills",
             offset:(100 * multiplier)
         })
@@ -99,7 +105,7 @@ $(window).on('load',function(){
         .addIndicators();
 
         //change nav color when projects section is under nav
-        new ScrollMagic.Scene({
+        navOverProjects = new ScrollMagic.Scene({
             triggerElement:"#projects",
             offset:(100 * multiplier)
         })
@@ -109,7 +115,7 @@ $(window).on('load',function(){
         .addIndicators();
 
         //change nav color when hobbies section is under nav
-        new ScrollMagic.Scene({
+        navOverHobbies = new ScrollMagic.Scene({
             triggerElement:"#hobbies",
             offset:(100 * multiplier)
         })
@@ -118,9 +124,34 @@ $(window).on('load',function(){
         .on("leave", lightNav)
         .addIndicators();
 
+        getTriggerPositions();
+        setOffsetPoints(positions);
     }, 500);
 });
 
+function updateOffset(){
+    //update trigger offsets
+    navOverMain.offset(100 * multiplier);
+    navOverResume.offset(100 * multiplier);
+    navOverProjects.offset(100 * multiplier);
+    navOverSkills.offset(100 * multiplier);
+    navOverHobbies.offset(100 * multiplier);
+}
 
+function getTriggerPositions(){
+    //this gets the tigger positions that will be most used and the offset incase needed
+    positions = {
+        home: 0,
+        main: navOverMain.triggerPosition(),
+        resume: navOverResume.triggerPosition(),
+        projects: navOverProjects.triggerPosition(),
+        skills: navOverSkills.triggerPosition(),
+        hobbies: navOverHobbies.triggerPosition(),
+        sceneOffset: (100 * multiplier)
+    };
+
+    //the return is not really needed but I will leave in just incase its needed
+    return positions;
+}
 
 

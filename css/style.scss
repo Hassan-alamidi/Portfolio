@@ -56,6 +56,10 @@ nav ul li{
     color: beige;
     font-weight:  bold;
     font-size: 1.2em;
+    
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 #topNav{
@@ -210,7 +214,8 @@ nav ul li{
 }
 
 .circleIcon{
-    background: #575957;
+    background:radial-gradient(#cbcbcb -100%,#585958 5%, #585958 85%);
+;
     min-height: 24px;
     max-height: 24px;
     min-width: 24px;

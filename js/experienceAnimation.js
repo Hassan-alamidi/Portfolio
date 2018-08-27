@@ -1,11 +1,13 @@
 
 const resumeTimeline = new TimelineMax({paused:true});
+
 var eduDate, eduDescription, eduSelector, eduTitle;
 var expDate, expDescription, expSelector, expTitle;
 
 function resumeAnimations(){
         setupAnimaton();
         setupTimeline();
+        setupMouseOverItems();
 }
 
 function playResume(){
@@ -44,7 +46,7 @@ function setupAnimaton(){
         //make sure the date appears above the description before we slide them in
         TweenMax.set(eduDate, {zIndex:1});
         TweenMax.set(expDate, {zIndex:1});
-
+        TweenMax.set($('.circleIcon'), {background:"radial-gradient(#cbcbcb -100%, #999999 -100%,#686868 -100%, #585958 39%)"});
 
 }
 
@@ -81,6 +83,16 @@ function setupTimeline(){
         
 }
 
+function setupMouseOverItems(){
+        $('.infoContainer').mouseover(function(){
+                TweenMax.to($(this).find('.circleIcon'), 0.2, {background:"radial-gradient(#cbcbcb 34%, #999999 60%,#686868 55%, #585958 39%)"});
+        });
+
+        $('.infoContainer').mouseleave(function(){
+                TweenMax.to($(this).find('.circleIcon'), 0.7, {background:"radial-gradient(#cbcbcb -100%, #999999 -100%,#686868 -100%, #585958 39%)"});
+        });
+}
+
 function slideInAndWobble(objArr, lable){
         var datePos = 0;
         [].forEach.call(objArr, function(obj){
@@ -106,3 +118,4 @@ function slideIn(objArr, lable){
                 resumeTimeline.to(obj, 1, {left:"0%", ease:Back.easeOut.config(1)}, lable);
         });
 }
+
