@@ -1,5 +1,5 @@
 var ajax = new XMLHttpRequest();
-ajax.open('GET', "images/careerTimelinetest3.svg", true);
+ajax.open('GET', "images/careerTimelinetest3.svg", false);
 
 const milestoneIcons = new Array();
 const careerPath = new Array();
@@ -48,7 +48,7 @@ function setupAnimation(){
 
 	//get all needed elements and store in array
 	var circles = document.getElementsByClassName('milestoneIcons');
-	var descriptions = document.getElementsByClassName('milestones');
+	var descriptions = document.getElementsByClassName('milestoneHeadings');
 	var lines = document.getElementsByClassName('careerPath');
 	var numbers = document.getElementsByClassName('number');
 	numbers = Array.from(numbers);
