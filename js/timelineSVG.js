@@ -9,6 +9,7 @@ const t1 = new TimelineMax({paused:true, ease:Linear.easeNone});
 const t2 = new TimelineMax({paused:true,ease:Linear.easeNone, paused:true, onComplete:finalAnimation});
 const t3 = new TimelineMax({paused:true, ease:Linear.easeNone});
 const ending = new TimelineMax({paused:true});
+var isHoveredOver = false;
 
 ajax.onload = function(e){
 	var div = document.createElement('object');
@@ -38,13 +39,16 @@ function timeLineAnimation(){
 	//may need to mess around with timings when live but I think 100ms (I think less would work too) coupled with onload event should do the job
 	setTimeout(function(){
 		//do any setup that maybe required before animations begin
-		setupAnimation();
-		beginAnimation();
-		
+		//get, setup and store all svg elements
+		manageSvgElements();
+		//setup the timeline animations
+		setupAnimTL();
+		setupHoverAnim();
+	
 	},100);
 }
 
-function setupAnimation(){
+function manageSvgElements(){
 
 	//get all needed elements and store in array
 	var circles = document.getElementsByClassName('milestoneIcons');
@@ -64,21 +68,29 @@ function setupAnimation(){
 
 }
 
-function beginAnimation(){
+function setupAnimTL(){
 
 	var milestoneIcon = null;
 	var milestoneDesc = null;
 	var path = null;
 	var time = null;
 	var pathSpeed = 0;
+	var maxlen = Math.max(milestoneIcons.length, milestoneDescription.length, careerPath.length, timeline.length);
+	var pastCirc4 = false;
+	var secondIndex = 0;
 
-	do{
-		
+	for(var i = 0; i < maxlen; i++){
+		if(pastCirc4){
+			secondIndex = i + 1;
+		}else{
+			secondIndex = i;
+		}
 		//get the first elements of each array
-		milestoneIcon = milestoneIcons.shift();
-		milestoneDesc = milestoneDescription.shift();
-		path = careerPath.shift();
-		time = timeline.shift();
+		milestoneIcon = milestoneIcons[secondIndex];
+		milestoneDesc = milestoneDescription[secondIndex];
+		path = careerPath[i];
+		time = timeline[i];
+		
 		
 
 		//setup animation for circles
@@ -96,12 +108,13 @@ function beginAnimation(){
 			
 				//the if for OPCircle is here inorder to get another life event from the array
 				if(milestoneIcon.key === "OPCircle4"){
+					pastCirc4 = true;
 					//if id is OPCircle4 then take another from the array, add to second timeline but do not add offset
-					milestoneIcon = milestoneIcons.shift();
+					milestoneIcon = milestoneIcons[i+1];
 					t1.to(milestoneDesc.physicalObject, 0.8,{scale:1, transformOrigin:"center", ease: Back.easeOut.config(2)});
 					t2.to(milestoneIcon.physicalObject, 0.6,{strokeDashoffset:0});
 					ending.to(milestoneDesc.physicalObject, 0.8, {scale:0, transformOrigin:"center", ease:Back.easeIn.config(3)},"+5");
-					milestoneDesc = milestoneDescription.shift();
+					milestoneDesc = milestoneDescription[i + 1];
 					
 
 				}
@@ -130,8 +143,40 @@ function beginAnimation(){
 			}
 		}
 
-	}while(0 != milestoneIcons.length || 0 != milestoneDescription.length || 0 != careerPath.length || 0 != timeline.length);
+	}
 
+}
+
+function setupHoverAnim(){
+	//TODO fix scaling issue
+	for(var i = 0; i < milestoneIcons.length; i++){
+		
+		var icon = milestoneIcons[i].physicalObject;
+		var desc = milestoneDescription[i].physicalObject;
+
+		icon.addEventListener("mouseover",function(desc){
+			displayDescription(desc);
+		}.bind(null,desc));
+
+		desc.addEventListener("mouseleave", function(desc){
+			hideDescription(desc);
+		}.bind(null,desc));
+		
+	}
+}
+
+function displayDescription(obj){
+	if(!t1.isActive() && !t2.isActive() && !t3.isActive() && !ending.isActive()){
+	
+		TweenMax.to(obj, 0.8,{scale:1.2, transformOrigin:"center", ease: Back.easeOut.config(2)});
+	}
+}
+
+function hideDescription(obj){
+	if(!t1.isActive() && !t2.isActive() && !t3.isActive() && !ending.isActive()){
+
+		TweenMax.to(obj, 0.8, {scale:0, transformOrigin:"center", ease: Back.easeIn.config(3)});
+	}
 }
 
 function setupAndStoreObj(objArr, type){
@@ -215,10 +260,6 @@ function setupElements(obj, objLength, type){
 			TweenMax.set(obj, {strokeDasharray:objLength + 1});
 			TweenMax.set(obj, {strokeDashoffset:objLength + 1});
 		}
-
-}
-
-function drawLine(lineID, length){
 
 }
 

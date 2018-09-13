@@ -101,6 +101,9 @@ nav ul li {
   display: flex;
   flex-wrap: wrap; }
 
+#aboutme {
+  text-align: center; }
+
 #resume {
   overflow: hidden;
   background-color: #585957;
@@ -220,7 +223,7 @@ nav ul li {
   border-left: 10px solid #d93b39;
   margin-top: 10px; }
 
-#profileIntro, #education {
+#education {
   padding-right: 25px; }
 
 #skillSet {
@@ -298,6 +301,8 @@ nav ul li {
     padding: 5px;
     list-style-type: none; }
     #projects ul li {
+      background-size: cover;
+      box-shadow: 0 0 25px 2px #575958 inset;
       text-align: center;
       flex: 1;
       color: aliceblue;
@@ -416,6 +421,9 @@ p1 {
       margin-top: 10px; }
     .progress .progress-value span {
       font-size: 12px;
+      font-weight: bold;
+      font-family: sans-serif;
+      line-height: 0.3;
       text-transform: uppercase; }
 
 /* This for look creates the 	necessary css animation names 

@@ -120,6 +120,10 @@ nav ul li{
     flex-wrap: wrap;
 }
 
+#aboutme{
+    text-align: center;
+}
+
 #resume{
     overflow:hidden;
     background-color: #585957;
@@ -257,7 +261,7 @@ nav ul li{
     margin-top: 10px;
 }
 
-#profileIntro, #education{
+#education{
     padding-right: 25px;
 }
 
@@ -348,6 +352,7 @@ nav ul li{
             padding: 5px;
             list-style-type: none;
         li{
+            box-shadow: 0 0 25px 2px #575958 inset;
             text-align: center;
             flex: 1;
             color: aliceblue;
@@ -491,8 +496,11 @@ $howManySteps: 10; //this needs to be even.
       margin-top: 10px;
     }
     span {
-      font-size: 12px;
-      text-transform: uppercase;
+        font-size: 12px;
+        font-weight: bold;
+        font-family: sans-serif;
+        line-height: 0.3;
+        text-transform: uppercase;
     }
   }
 }

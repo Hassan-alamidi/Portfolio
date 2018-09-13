@@ -117,7 +117,7 @@
          id="OPCertObtained"
          style="display:none">
         <circle
-           transform="rotate(-90)"
+           transform="rotate(-90.2)"
            r="12.099764"
            cy="120.47487"
            cx="-41.495018"
